@@ -1,0 +1,207 @@
+﻿<Window x:Class="NUBiometricAttendanceApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="NU Bio-Metric Attendance"
+        Height="{Binding SystemParameters.PrimaryScreenHeight}" 
+        Width="{Binding SystemParameters.PrimaryScreenWidth}"
+        Loaded="Window_Loaded">
+    <Window.Background>
+        <ImageBrush ImageSource="Images/Main_Background.png"/>
+    </Window.Background>
+    <DockPanel >
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Name="ConnStatusBlock" Height="20" Grid.Row="0" Grid.Column="0" Background="LightGray" FontSize="15"></TextBlock>
+            <ProgressBar Name="progressBar" Grid.Row="0" Grid.Column="1"></ProgressBar>
+            <TextBlock Height="20" Grid.Row="0"  Grid.Column="2" Background="LightGray" Text="Faculty Name" TextAlignment="Center" FontSize="15"></TextBlock>
+        </Grid>
+        
+        <TabControl x:Name="tabControl" HorizontalContentAlignment="Stretch" Height="Auto" VerticalContentAlignment="Stretch" Width="Auto" Background="Transparent" DockPanel.Dock="Top">
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <Border Name="Border" BorderThickness="1,1,1,0" BorderBrush="Gainsboro" CornerRadius="4,4,0,0" Margin="2,0">
+                                    <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Border" Property="Background" Value="Crimson" />
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="False">
+                                        <Setter TargetName="Border" Property="Background" Value="Crimson" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+
+
+            <TabItem Header="Setup" Height="25" Width="150" VerticalAlignment="Top" Foreground="White" FontSize="15">
+
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle Grid.Row="0" Grid.Column="1" Grid.RowSpan="4" Fill="Crimson" Opacity="0.9"></Rectangle>
+                    <Image Source="Images/Logo.png" Grid.Row="0" Grid.Column="1" Margin="10"></Image>
+                    <Button Content="Register" Foreground="White" BorderBrush="White" BorderThickness="1" Background="Transparent" Margin="40 25" Grid.Row="1" Grid.Column="2" Click="Register_Click"/>
+                    <Button Content="Transfer myData" Foreground="White" BorderBrush="White" BorderThickness="1" Background="Transparent" Margin="40 25" Grid.Row="2" Grid.Column="2" Click="Transfer_MyData_Click"/>
+                    <Button Content="Add Excel Sheet"  Name="Add_Excel" Foreground="White" BorderBrush="White" BorderThickness="1" Background="Transparent" Margin="40 25" Grid.Row="3" Grid.Column="3" Click="Add_Excel_Click"/>
+                    
+                </Grid>
+
+            </TabItem>
+
+
+            <TabItem Header="Attendance" Foreground="White" Height="25" Width="150" FontSize="15">
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Name="timeTableGrid" Background="Azure" Grid.Column="0" Grid.Row="0" Grid.RowSpan="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="1" Grid.Row="1" Grid.RowSpan="6" BorderBrush="CadetBlue" BorderThickness="1">
+                        </Border>
+                        <Border Grid.Column="2" Grid.Row="1" Grid.RowSpan="6" BorderBrush="CadetBlue" BorderThickness="1">
+                        </Border>
+                        <Border Grid.Column="3" Grid.Row="1" Grid.RowSpan="6" BorderBrush="CadetBlue" BorderThickness="1">
+                        </Border>
+                        <Border Grid.Column="4" Grid.Row="1" Grid.RowSpan="6" BorderBrush="CadetBlue" BorderThickness="1">
+                        </Border>
+                        <Border Grid.Column="5" Grid.Row="1" Grid.RowSpan="6" BorderBrush="CadetBlue" BorderThickness="1">
+                        </Border>
+                        <Border Grid.Column="6" Grid.Row="1" Grid.RowSpan="6" BorderBrush="CadetBlue" BorderThickness="1">
+                        </Border>
+                        <Border Grid.Column="7" Grid.Row="1" Grid.RowSpan="6" BorderBrush="CadetBlue" BorderThickness="1">
+                        </Border>
+                        <Border Grid.Column="8" Grid.Row="1" Grid.RowSpan="6" BorderBrush="CadetBlue" BorderThickness="1">
+                        </Border>
+                        <Border Grid.Column="9" Grid.Row="1" Grid.RowSpan="6" BorderBrush="CadetBlue" BorderThickness="1">
+                        </Border>
+
+                        <Border Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="9" BorderBrush="CadetBlue" BorderThickness="1">
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="9" BorderBrush="CadetBlue" BorderThickness="1">
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="9" BorderBrush="CadetBlue" BorderThickness="1">
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="9" BorderBrush="CadetBlue" BorderThickness="1">
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="9" BorderBrush="CadetBlue" BorderThickness="1">
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="9" BorderBrush="CadetBlue" BorderThickness="1">
+                        </Border>
+
+                        <DockPanel Background="CadetBlue" Grid.Column="0" Grid.Row="0">
+                        </DockPanel>
+
+                        <DockPanel Background="CadetBlue" Grid.Column="1" Grid.Row="0">
+                            <TextBlock Height="20" Foreground="Beige" Text="8:30 - 9:30" TextAlignment="Center" VerticalAlignment="Center" FontSize="15"/>
+                        </DockPanel>
+                        <DockPanel Background="CadetBlue" Grid.Column="2" Grid.Row="0">
+                            <TextBlock Height="20" Foreground="Beige" Text="9:30 - 10:30" TextAlignment="Center" VerticalAlignment="Center" FontSize="15"/>
+                        </DockPanel>
+                        <DockPanel Background="CadetBlue" Grid.Column="3" Grid.Row="0">
+                            <TextBlock Height="20" Foreground="Beige" Text="10:30 - 11:30" TextAlignment="Center" VerticalAlignment="Center" FontSize="15"/>
+                        </DockPanel>
+                        <DockPanel Background="CadetBlue" Grid.Column="4" Grid.Row="0">
+                            <TextBlock Height="20" Foreground="Beige" Text="11:30 - 12:30" TextAlignment="Center" VerticalAlignment="Center" FontSize="15"/>
+                        </DockPanel>
+                        <DockPanel Background="CadetBlue" Grid.Column="5" Grid.Row="0">
+                            <TextBlock Height="20" Foreground="Beige" Text="12:30 - 13:30" TextAlignment="Center" VerticalAlignment="Center" FontSize="15"/>
+                        </DockPanel>
+                        <DockPanel Background="CadetBlue" Grid.Column="6" Grid.Row="0">
+                            <TextBlock Height="20" Foreground="Beige" Text="13:30 - 14:30" TextAlignment="Center" VerticalAlignment="Center" FontSize="15"/>
+                        </DockPanel>
+                        <DockPanel Background="CadetBlue" Grid.Column="7" Grid.Row="0">
+                            <TextBlock Height="20" Foreground="Beige" Text="14:30 - 15:30" TextAlignment="Center" VerticalAlignment="Center" FontSize="15"/>
+                        </DockPanel>
+                        <DockPanel Background="CadetBlue" Grid.Column="8" Grid.Row="0">
+                            <TextBlock Height="20" Foreground="Beige" Text="15:30 - 16:30" TextAlignment="Center" VerticalAlignment="Center" FontSize="15"/>
+                        </DockPanel>
+                        <DockPanel Background="CadetBlue" Grid.Column="9" Grid.Row="0">
+                            <TextBlock Height="20" Foreground="Beige" Text="16:30 - 17:30" TextAlignment="Center" VerticalAlignment="Center" FontSize="15"/>
+                        </DockPanel>
+
+                        <DockPanel Background="CadetBlue" Grid.Column="0" Grid.Row="1">
+                            <TextBlock Height="20" Foreground="Beige" Text="Monday" TextAlignment="Center" VerticalAlignment="Center" FontSize="15"/>
+                        </DockPanel>
+                        <DockPanel Background="CadetBlue" Grid.Column="0" Grid.Row="2">
+                            <TextBlock Height="20" Foreground="Beige" Text="Tuesday" TextAlignment="Center" VerticalAlignment="Center" FontSize="15"/>
+                        </DockPanel>
+                        <DockPanel Background="CadetBlue" Grid.Column="0" Grid.Row="3">
+                            <TextBlock Height="20" Foreground="Beige" Text="Wednesday" TextAlignment="Center" VerticalAlignment="Center" FontSize="15"/>
+                        </DockPanel>
+                        <DockPanel Background="CadetBlue" Grid.Column="0" Grid.Row="4">
+                            <TextBlock Height="20" Foreground="Beige" Text="Thursday" TextAlignment="Center" VerticalAlignment="Center" FontSize="15"/>
+                        </DockPanel>
+                        <DockPanel Background="CadetBlue" Grid.Column="0" Grid.Row="5">
+                            <TextBlock Height="20" Foreground="Beige" Text="Friday" TextAlignment="Center" VerticalAlignment="Center" FontSize="15"/>
+                        </DockPanel>
+                        <DockPanel Background="CadetBlue" Grid.Column="0" Grid.Row="6">
+                            <TextBlock Height="20" Foreground="Beige" Text="Saturday" TextAlignment="Center" VerticalAlignment="Center" FontSize="15"/>
+                        </DockPanel>
+                    </Grid>
+                    <Rectangle Grid.Row="0" Grid.Column="1" Grid.RowSpan="4" Fill="Crimson" Opacity="0.9"></Rectangle>
+                    <Border Grid.Column="1" Grid.Row="0" Grid.RowSpan="4" BorderBrush="CadetBlue" BorderThickness="2 0">
+                    </Border>
+                    <Image Source="Images/Logo.png" Grid.Row="0" Grid.Column="1" Margin="10"></Image>
+                    <TextBlock Name="Class_Count" Grid.Row="1" Grid.Column="2" Foreground="White" FontSize="15" TextAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                    <Button Name="Get_Attendance" Content="Get Attendance" Grid.Column="1" Grid.Row="2" Margin="40 25" Foreground="White" BorderBrush="White" BorderThickness="1" Background="Transparent" Click="Get_Attendance_Click"></Button>
+                    <Button Name="Mark_Attendance" Content="Mark Attendance" Grid.Column="1" Grid.Row="3" Margin="40 25" Foreground="White" BorderBrush="White" BorderThickness="1" Background="Transparent" Click="Mark_Attendance_Click"></Button>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+    </DockPanel>
+</Window>

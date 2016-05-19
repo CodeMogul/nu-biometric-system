@@ -1,0 +1,7 @@
+*.sln
+*.suo
+
+.vs
+bin
+obj
+packages
