@@ -10,12 +10,12 @@ For detailed work process and description, please check Report.pdf.
 3. A Windows Presentation Foundation(WPF) App for Retrieveing Attendance and generating attendace sheets.
 
 ### Workflow
-[Process Flow](/Screenshots/process-flow.png)
+![Process Flow](./Screenshots/process-flow.png)
 
 ### Screenshots
 
 #### Attendance App 1
-[Attendance App 1](/Screenshots/NU_Biometric_Page_1.png)
+![Attendance App 1](./Screenshots/NU_Biometric_Page_1.png)
 
 #### Attendance App 2
-[Attendance App 2](/Screenshots/NU_Biometric_Page_2.png)
+![Attendance App 2](./Screenshots/NU_Biometric_Page_2.png)
